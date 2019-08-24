@@ -18,8 +18,8 @@ def read_filename_in_folder (filepath, list):
     return
 
 filename_list = []
-source = raw_input("输入读取的文件夹路径：")
-dest = raw_input("选择输出路径：")
+source = input("输入读取的文件夹路径：")
+dest = input("选择输出路径：")
 read_filename_in_folder(source, filename_list)
 write_excel(dest, filename_list)
 
