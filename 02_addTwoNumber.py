@@ -79,3 +79,16 @@ for value in list2:
 solve = Solution()
 result = solve.addTwoNumbers(plist1, plist2)
 
+
+'''
+执行用时 :
+96 ms
+, 在所有 Python3 提交中击败了
+76.60%
+的用户
+内存消耗 :
+13.9 MB
+, 在所有 Python3 提交中击败了
+5.06%
+的用户
+'''
