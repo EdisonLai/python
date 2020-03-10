@@ -1,0 +1,9 @@
+authut: edison Lai
+mail: edison@cstrail.com
+
+本程序用于阻止hosts的修改。
+方法是保存最初始的hosts内容后，每250秒读取一次hosts文件内容，
+再与初始hosts内容比较
+若不相等则将初始hosts内容回写
+
+后续将通过监控文件改动，回调钩子函数实现
