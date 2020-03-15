@@ -24,11 +24,12 @@ def task():
     str = read_file_as_str("/etc/hosts")
     if (str != first_read):
         write_str_to_file(first_read, "/etc/hosts")
-        Timer(10, task, ()).start()
+        Timer(250, task, ()).start()
+        print("reload original hosts")
     else:
         #write_str_to_file(first_read, "/home/edison/hosts")
         #print("equal")
-        Timer(250, task, ()).start()
+        Timer(120, task, ()).start()
     return
 
 
@@ -38,7 +39,7 @@ def timedTask():
     第二个参数: 要执行的任务, 即函数
     第三个参数: 调用函数的参数(tuple)
     '''
-    Timer(250, task, ()).start()
+    Timer(10, task, ()).start()
 
 
 first_read = read_file_as_str("/etc/hosts")
