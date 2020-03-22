@@ -6,10 +6,6 @@ import datetime
 
 file = ['/etc/hosts']
 
-def test_function(str):
-    print("The file be modify")
-    print(str)
-
 def getRestSeconds():
     now = datetime.datetime.now()
     today_begin = datetime.datetime(now.year, now.month, now.day, 14, 0, 0)
@@ -32,15 +28,21 @@ class MyEvent(pyinotify.ProcessEvent):
     def __init__(self, path, original_contents):
         self._path = path
         self._original_contents = original_contents
+        self._count = 0
 
     def process_IN_MODIFY(self, event):
         if event.pathname in file:
             if (self._original_contents == file_lib.read_file_as_str("/etc/hosts")):
                 return
+            #else:
+                #print ("\n\n\n",file_lib.read_file_as_str("/etc/hosts"))
+                #print ("\n", self._original_contents)
             
             reset_time = getRestSeconds()
             print("/etc/hosts file has changed,file will be reset after", reset_time, "seconds\n")
             timedTask(reset_time, file_lib.write_str_to_file, self._original_contents, event.pathname)
+            self._count = self._count + 1
+            file_lib.write_str_to_file(str(self._count), "/home/edison/count.log")
         else:
             #print("/etc file has changed\n")
             pass

@@ -7,7 +7,7 @@ import sys
 def file_path_exist(path):
     # 判断路径文件存在
     if not os.path.isfile(path):
-        raise TypeError(path + " does not exist")
+        return False
     else:
         return True
 
@@ -17,8 +17,8 @@ def read_file_as_str(path):
     # print type(all_the_text)
     return all_the_text
 
-def write_str_to_file(str, path):
-    print("write str:\n", str, "\nto", path)
-    open(path, mode = 'w').write(str)
+def write_str_to_file(str, path):  
+    #print("write str:\n", str, "\nto", path)
+    open(path, mode = 'w+').write(str)
     open(path).close
     return
